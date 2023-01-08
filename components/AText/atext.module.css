@@ -1,0 +1,13 @@
+.h1 {
+	font-size: 28px;
+}
+
+.h2 {
+	font-size: 18px;
+}
+
+.p,
+.span,
+.button {
+	font-size: 12px;
+}

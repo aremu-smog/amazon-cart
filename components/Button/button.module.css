@@ -1,0 +1,6 @@
+.primary {
+	background-color: var(--az-yellow);
+	border-radius: 7px;
+	width: 100%;
+	height: 34px;
+}
