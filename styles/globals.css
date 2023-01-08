@@ -1,4 +1,10 @@
 :root {
+	/* Colors */
+	--az-gray: #eaeded;
+	--az-white: #ffffff;
+	--az-black: #0f1111;
+	--az-yellow: #ffd814;
+	--az-blue: #0066c0;
 }
 
 * {
@@ -14,7 +20,10 @@ body {
 }
 
 body {
-	color: rgb(var(--foreground-rgb));
+	background-color: var(--az-gray);
+
+	/* To be replaced/updated with Amazon's font */
+	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 a {
