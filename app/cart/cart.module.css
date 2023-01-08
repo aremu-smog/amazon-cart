@@ -1,0 +1,14 @@
+.wrapper {
+	width: 95%;
+	max-width: 1920px;
+	margin: 16px auto;
+}
+
+.cart {
+	background-color: var(--az-white);
+	padding: 28px 22px 48px 22px;
+}
+
+.cart-header p {
+	text-align: right;
+}
