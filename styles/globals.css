@@ -8,10 +8,17 @@
 	--az-green: #007600;
 }
 
+@font-face {
+	font-family: "Amazon Ember", sans-serif;
+	src: url(/fonts/AmazonEmber_Bd.ttf);
+	font-display: swap;
+}
+
 * {
 	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
+	font-family: "Amazon Ember";
 }
 
 html,
@@ -20,12 +27,19 @@ body {
 	overflow-x: hidden;
 	line-height: 1.5;
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 400;
+}
 
 body {
 	background-color: var(--az-gray);
 
-	/* To be replaced/updated with Amazon's font */
-	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+	font-family: "Amazon Ember";
 }
 
 a {
