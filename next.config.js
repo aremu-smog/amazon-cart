@@ -4,6 +4,17 @@ const nextConfig = {
 	experimental: {
 		appDir: true,
 	},
+
+	images: {
+		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "fourthcanvas.co",
+				port: "",
+				pathname: "/static/**",
+			},
+		],
+	},
 }
 
 module.exports = nextConfig

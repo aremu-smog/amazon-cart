@@ -2,7 +2,9 @@ import Head from "next/head"
 import { AText, Button, Hr } from "../../components"
 import styles from "./cart.module.css"
 import { CartHeader } from "./components"
+import { CartItem } from "./components/cart-item"
 export default function Home() {
+	const noOfItems = 4
 	return (
 		<>
 			<Head>
@@ -14,10 +16,17 @@ export default function Home() {
 				{/* Shopping Cart Section */}
 				<section className={styles.cart}>
 					<CartHeader />
+					<ul className={styles["cart-items-list"]}>
+						<CartItem />
+					</ul>
 				</section>
 
 				{/* Subtotal Section */}
-				<aside></aside>
+				<aside className={styles["cart-sidebar"]}>
+					<AText variant='h2'>
+						Subtotal ({noOfItems} items): <b>$98.90</b>
+					</AText>
+				</aside>
 			</main>
 		</>
 	)
