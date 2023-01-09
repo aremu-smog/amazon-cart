@@ -32,7 +32,9 @@ const CartItem = ({ item }) => {
 					</div>
 					<div>
 						{/* Stock status */}
-						<AText variant='p'>In Stock</AText>
+						<AText variant='p' className={styles["in-stock"]}>
+							In Stock
+						</AText>
 						<div>
 							{/* Quantity Toggle */}
 
@@ -40,7 +42,7 @@ const CartItem = ({ item }) => {
 								<option value='1'>Qty: 1</option>
 							</select>
 
-							<Button>Delete</Button>
+							<Button variant='secondary'>Delete</Button>
 						</div>
 					</div>
 				</div>

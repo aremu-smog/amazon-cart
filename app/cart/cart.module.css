@@ -10,7 +10,7 @@
 .cart {
 	background-color: var(--az-white);
 	padding: 28px 22px 48px 22px;
-	grid-column: 1 / span 10;
+	grid-column: 1 / span 9;
 }
 
 .cart-header p {
@@ -24,6 +24,7 @@
 .cart-item {
 	display: flex;
 	width: 100%;
+	padding: 16px 0px;
 }
 
 .cart-item-image {
@@ -48,8 +49,12 @@
 	margin-bottom: 8px;
 }
 
+.in-stock {
+	color: var(--az-green);
+}
+
 .cart-sidebar {
 	background-color: var(--az-white);
-	grid-column: 11 / span 2;
+	grid-column: 10 / span 3;
 	padding: 28px 22px 48px 22px;
 }
