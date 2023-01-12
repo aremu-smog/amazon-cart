@@ -1,9 +1,11 @@
 import Image from "next/image"
 import { AText, Button, Hr } from "../../../components"
+import { useCart } from "../../../hooks"
 import styles from "../cart.module.css"
 
 const CartItem = ({ product }) => {
-	const { productName, img, available } = product
+	const { deleteProductFromCart } = useCart()
+	const { productName, img, available, productId } = product
 	return (
 		<>
 			<li className={styles["cart-item"]}>
@@ -44,7 +46,11 @@ const CartItem = ({ product }) => {
 								</select>
 							</div>
 
-							<Button variant='secondary'>Delete</Button>
+							<Button
+								variant='secondary'
+								onClick={() => deleteProductFromCart(productId)}>
+								Delete
+							</Button>
 						</div>
 					</div>
 				</div>
