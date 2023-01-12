@@ -9,9 +9,9 @@ const nextConfig = {
 		remotePatterns: [
 			{
 				protocol: "https",
-				hostname: "fourthcanvas.co",
+				hostname: "cdn.reloadly.com",
 				port: "",
-				pathname: "/static/**",
+				pathname: "/giftcards/**",
 			},
 		],
 	},

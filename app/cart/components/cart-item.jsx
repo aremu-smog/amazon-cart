@@ -2,18 +2,14 @@ import Image from "next/image"
 import { AText, Button, Hr } from "../../../components"
 import styles from "../cart.module.css"
 
-const CartItem = ({ item }) => {
+const CartItem = ({ product }) => {
+	const { productName, img, available } = product
 	return (
 		<>
 			<li className={styles["cart-item"]}>
 				{/* image */}
 				<div className={styles["cart-item-image"]}>
-					<Image
-						src='https://fourthcanvas.co/static/be697453bb4ea46a43b624c5a3659ee5/c6516/03_-_Nomba_app_icon-fourthcanvas_yzbalq.webp'
-						alt=''
-						width={180}
-						height={180}
-					/>
+					<Image src={img} alt='' width={180} height={120} />
 				</div>
 
 				{/* Cart item details */}
@@ -22,25 +18,31 @@ const CartItem = ({ item }) => {
 						{/* Title */}
 
 						<a href='' className={styles["cart-item-title"]}>
-							<AText variant='h2'>
-								Amazon Basics USB-C Car Charger with 18W USB-C Port and 12W
-								USB-A Port
-							</AText>
+							<AText variant='h2'>{productName}</AText>
 						</a>
 						{/* Price */}
 						<AText variant='h2'>$17.51</AText>
 					</div>
 					<div>
 						{/* Stock status */}
-						<AText variant='p' className={styles["in-stock"]}>
-							In Stock
+						<AText
+							variant='p'
+							className={styles[available ? "in-stock" : "out-of-stock"]}>
+							{available ? "In" : "Out of"} Stock
 						</AText>
-						<div>
+						<div className={styles["cart-item-actions"]}>
 							{/* Quantity Toggle */}
-
-							<select>
-								<option value='1'>Qty: 1</option>
-							</select>
+							<div>
+								<select
+									className={styles["cart-item-quantity"]}
+									id='cart-item-quantity'>
+									<option value='0'>0 (Delete)</option>
+									<option value='1' selected>
+										1
+									</option>
+									<option value='1'> 2</option>
+								</select>
+							</div>
 
 							<Button variant='secondary'>Delete</Button>
 						</div>

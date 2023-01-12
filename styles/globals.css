@@ -6,6 +6,8 @@
 	--az-yellow: #ffd814;
 	--az-blue: #0066c0;
 	--az-green: #007600;
+	--az-red: #760000;
+	--az-orange: #ff9900;
 }
 
 @font-face {
@@ -52,4 +54,42 @@ button {
 	border-width: 1px;
 	border-style: solid;
 	cursor: pointer;
+}
+
+.main-nav {
+	background-color: var(--az-black);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 12px 2.5%;
+}
+
+.main-nav .logo-wrapper {
+	position: relative;
+	display: inline-block;
+	height: 40px;
+	width: 123px;
+	overflow: hidden;
+}
+
+:has(.logo-wrapper, .cart-wrapper) img {
+	object-fit: contain;
+}
+
+.main-nav .cart-wrapper {
+	position: relative;
+	display: inline-block;
+	height: 40px;
+	width: 40px;
+	overflow: hidden;
+	color: var(--az-orange);
+}
+
+.cart-wrapper .no-of-items {
+	display: inline-block;
+	width: 100%;
+	font-size: 13px;
+	padding-left: 8px;
+	/* background-color: white; */
+	text-align: center;
 }
