@@ -1,9 +1,8 @@
 .wrapper {
 	width: 95%;
-	max-width: 1920px;
+	max-width: var(--max-width);
 	margin: 16px auto;
 	display: flex;
-	grid-template-columns: repeat(12, 1fr);
 	gap: 12px;
 }
 

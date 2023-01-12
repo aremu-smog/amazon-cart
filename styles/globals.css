@@ -8,6 +8,13 @@
 	--az-green: #007600;
 	--az-red: #760000;
 	--az-orange: #ff9900;
+
+	/* Spacing */
+
+	--content-padding: 28px 22px 48px 22px;
+
+	/* Width */
+	--max-width: 1920px;
 }
 
 @font-face {

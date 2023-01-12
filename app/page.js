@@ -1,9 +1,10 @@
 "use client"
 import { useProductsContext } from "../contexts"
 import "../styles/globals.css"
+import { ProductList } from "./product/components"
 
 export default function Home() {
-	const { products } = useProductsContext()
+	const { isLoading } = useProductsContext()
 
-	return <section>{JSON.stringify(products)}</section>
+	return <section>{isLoading ? "Loading..." : <ProductList />}</section>
 }

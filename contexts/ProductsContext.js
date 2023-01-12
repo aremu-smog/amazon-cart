@@ -4,6 +4,7 @@ const ProductsContext = React.createContext()
 export const useProductsContext = () => useContext(ProductsContext)
 
 export const ProductsProvider = ({ children }) => {
+	const [isLoading, setIsLoading] = useState(true)
 	const [products, setProducts] = useState([])
 	const [noOfItemsInCart, setNoOfItemsInCart] = useState(0)
 
@@ -19,9 +20,8 @@ export const ProductsProvider = ({ children }) => {
 				const allAssets = data.data
 				const giftCards = allAssets.giftCardsRLD.content
 
-				const recentProducts = giftCards.slice(0, 9)
-
-				setProducts(recentProducts)
+				setProducts(giftCards)
+				setIsLoading(false)
 			})
 			.catch(e => {
 				console.log("Something went wrong", e.messaage)
@@ -30,6 +30,7 @@ export const ProductsProvider = ({ children }) => {
 	const values = {
 		products,
 		setProducts,
+		isLoading,
 		noOfItemsInCart,
 		setNoOfItemsInCart,
 	}

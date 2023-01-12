@@ -12,11 +12,6 @@ export default function Cart() {
 	console.log(productsInCart)
 	return (
 		<>
-			<Head>
-				<title>Amazon Cart</title>
-				<meta name='viewport' content='width=device-width, initial-scale=1' />
-				<link rel='icon' href='/favicon.ico' />
-			</Head>
 			<main className={styles.wrapper}>
 				{/* Shopping Cart Section */}
 				<section className={styles.cart}>
