@@ -30,7 +30,7 @@
 
 .cart-item-image {
 	width: 180px;
-	height: 180px;
+	height: 120px;
 	margin-right: 8px;
 }
 
@@ -72,9 +72,10 @@
 }
 
 .cart-sidebar {
-	flex-shrink: 0;
+	flex-shrink: 1;
 	flex-grow: 0;
 	position: relative;
+	max-width: 330px;
 }
 .cart-checkout {
 	background-color: var(--az-white);

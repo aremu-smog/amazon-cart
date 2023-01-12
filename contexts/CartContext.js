@@ -31,7 +31,7 @@ export const CartProvider = ({ children }) => {
 		if (products.length) {
 			return (
 				itemsInCart?.reduce((acc, curr) => {
-					return acc + curr.quantity
+					return parseInt(acc) + parseInt(curr.quantity)
 				}, 0) || 0
 			)
 		} else {
@@ -60,11 +60,41 @@ export const CartProvider = ({ children }) => {
 		updateCart(newItems)
 		setProductsInCart(updatedIems)
 	}
+
+	const updateCartItemQuantity = (productId, quantity) => {
+		// this is necessary because forms coerces numbers to string
+		const quantityInt = parseInt(quantity)
+		const newLocalItems = itemsInCart.map(item => {
+			if (item.id === productId) {
+				return {
+					...item,
+					quantity: quantityInt,
+				}
+			}
+
+			return item
+		})
+
+		const newProductsInCart = productsInCart.map(item => {
+			if (item.productId === productId) {
+				return {
+					...item,
+					quantity: quantityInt,
+				}
+			}
+
+			return item
+		})
+
+		updateCart(newLocalItems)
+		setProductsInCart(newProductsInCart)
+	}
 	const values = {
 		noOfItemsInCart,
 		addItemToCart,
 		deleteProductFromCart,
 		productsInCart,
+		updateCartItemQuantity,
 	}
 	return <CartContext.Provider value={values}>{children}</CartContext.Provider>
 }

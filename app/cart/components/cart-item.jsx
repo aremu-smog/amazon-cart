@@ -4,8 +4,9 @@ import { useCartContext } from "../../../contexts"
 import styles from "../cart.module.css"
 
 const CartItem = ({ product }) => {
-	const { deleteProductFromCart } = useCartContext()
-	const { productName, img, available, productId } = product
+	const { deleteProductFromCart, updateCartItemQuantity } = useCartContext()
+	const { productName, img, available, productId, quantity } = product
+
 	return (
 		<>
 			<li className={styles["cart-item"]}>
@@ -20,7 +21,10 @@ const CartItem = ({ product }) => {
 						{/* Title */}
 
 						<a href='' className={styles["cart-item-title"]}>
-							<AText variant='h2'>{productName}</AText>
+							<AText variant='h2'>
+								{productName}
+								{productId}
+							</AText>
 						</a>
 						{/* Price */}
 						<AText variant='h2'>$17.51</AText>
@@ -34,17 +38,8 @@ const CartItem = ({ product }) => {
 						</AText>
 						<div className={styles["cart-item-actions"]}>
 							{/* Quantity Toggle */}
-							<div>
-								<select
-									className={styles["cart-item-quantity"]}
-									id='cart-item-quantity'>
-									<option value='0'>0 (Delete)</option>
-									<option value='1' selected>
-										1
-									</option>
-									<option value='1'> 2</option>
-								</select>
-							</div>
+
+							<CartItemQuantity productId={productId} itemQuantity={quantity} />
 
 							<Button
 								variant='secondary'
@@ -61,4 +56,37 @@ const CartItem = ({ product }) => {
 	)
 }
 
+const CartItemQuantity = ({ productId, itemQuantity }) => {
+	const { deleteProductFromCart, updateCartItemQuantity } = useCartContext()
+	const dropDownValues = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+	const handleCartQuantityUpdate = e => {
+		const { value } = e.target
+
+		if (value === "10+") {
+			alert("Show input form")
+		} else if (parseInt(value) === 0) {
+			deleteProductFromCart(productId)
+		} else {
+			updateCartItemQuantity(productId, value)
+		}
+	}
+	return (
+		<select
+			onChange={handleCartQuantityUpdate}
+			className={styles["cart-item-quantity"]}>
+			<option value={0}>0 (Delete)</option>
+			{dropDownValues.map(dropdownValue => {
+				return (
+					<option
+						value={dropdownValue}
+						key={`${productId}${dropdownValue}`}
+						selected={itemQuantity === dropdownValue}>
+						{dropdownValue}
+					</option>
+				)
+			})}
+			<option value='10+'>10+</option>
+		</select>
+	)
+}
 export { CartItem }
