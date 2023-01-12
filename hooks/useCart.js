@@ -37,8 +37,6 @@ const useCart = () => {
 	const addItemToCart = async (productId, quantity) => {
 		const newItems = [...itemsInCart, { id: productId, quantity: 1 }]
 		await updateCart(newItems)
-
-		console.log(itemsInCart)
 		await getProductsInCart(itemsInCart)
 		setNoOfItemsInCart(_noOfItemsInCart)
 	}
@@ -49,8 +47,8 @@ const useCart = () => {
 		)
 
 		updateCart(newItems)
-		setItemsInCart(newItems)
 		getProductsInCart(newItems)
+		setNoOfItemsInCart(_noOfItemsInCart)
 	}
 
 	const getProductsInCart = itemsInCart => {

@@ -2,24 +2,26 @@
 import Image from "next/image"
 import Link from "next/link"
 import { AText } from "../components"
-import { ProductsProvider } from "../contexts"
+import { CartProvider, ProductsProvider, useCartContext } from "../contexts"
 import { useCart } from "../hooks"
 import "../styles/globals.css"
 export default function RootLayout({ children }) {
 	return (
 		<ProductsProvider>
-			<html>
-				<head />
+			<CartProvider>
+				<html>
+					<head />
 
-				<body>
-					<nav className='main-nav'>
-						<Logo />
-						<Cart />
-					</nav>
+					<body>
+						<nav className='main-nav'>
+							<Logo />
+							<Cart />
+						</nav>
 
-					<main>{children}</main>
-				</body>
-			</html>
+						<main>{children}</main>
+					</body>
+				</html>
+			</CartProvider>
 		</ProductsProvider>
 	)
 }
@@ -34,7 +36,7 @@ const Logo = () => {
 	)
 }
 const Cart = () => {
-	const { noOfItemsInCart } = useCart()
+	const { noOfItemsInCart } = useCartContext()
 	return (
 		<span className='cart-wrapper'>
 			<Link href='/cart'>

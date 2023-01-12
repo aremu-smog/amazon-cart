@@ -5,10 +5,11 @@ import { AText, Button, Hr } from "../../components"
 import styles from "./cart.module.css"
 import { CartHeader } from "./components"
 import { CartItem } from "./components/cart-item"
-import { useCart } from "../../hooks"
-export default function Cart() {
-	const { noOfItemsInCart, addItemToCart, productsInCart } = useCart()
 
+import { useCartContext } from "../../contexts"
+export default function Cart() {
+	const { noOfItemsInCart, addItemToCart, productsInCart } = useCartContext()
+	console.log(productsInCart)
 	return (
 		<>
 			<Head>
@@ -40,7 +41,7 @@ export default function Cart() {
 								Proceed to checkout
 							</Button>
 							<Button
-								onClick={() => addItemToCart(1)}
+								onClick={() => addItemToCart(1, 2)}
 								className={styles["checkout-button"]}>
 								Proceed to checkout
 							</Button>
