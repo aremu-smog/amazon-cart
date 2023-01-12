@@ -3,7 +3,6 @@ import Image from "next/image"
 import Link from "next/link"
 import { AText } from "../components"
 import { CartProvider, ProductsProvider, useCartContext } from "../contexts"
-import { useCart } from "../hooks"
 import "../styles/globals.css"
 export default function RootLayout({ children }) {
 	return (

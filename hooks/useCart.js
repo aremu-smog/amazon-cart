@@ -41,16 +41,6 @@ const useCart = () => {
 		setNoOfItemsInCart(_noOfItemsInCart)
 	}
 
-	const deleteProductFromCart = productId => {
-		const newItems = itemsInCart.filter(
-			itemInCart => itemInCart.id !== productId
-		)
-
-		updateCart(newItems)
-		getProductsInCart(newItems)
-		setNoOfItemsInCart(_noOfItemsInCart)
-	}
-
 	const getProductsInCart = itemsInCart => {
 		const productsInCart = products?.filter(product => {
 			return itemsInCart?.some(item => item.id === product.productId)

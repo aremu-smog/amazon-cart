@@ -1,10 +1,10 @@
 import Image from "next/image"
 import { AText, Button, Hr } from "../../../components"
-import { useCart } from "../../../hooks"
+import { useCartContext } from "../../../contexts"
 import styles from "../cart.module.css"
 
 const CartItem = ({ product }) => {
-	const { deleteProductFromCart } = useCart()
+	const { deleteProductFromCart } = useCartContext()
 	const { productName, img, available, productId } = product
 	return (
 		<>

@@ -10,18 +10,33 @@ export const CartProvider = ({ children }) => {
 
 	const itemsInCart = getItemsInCart()
 	useEffect(() => {
-		const _productsInCart = products?.filter(product => {
-			return itemsInCart?.some(item => item.id === product.productId)
-		})
+		if (products.length) {
+			const _productsInCart = products?.filter(product => {
+				return itemsInCart?.some(item => item.id === product.productId)
+			})
 
-		setProductsInCart(_productsInCart)
+			const productsWithQuantity = _productsInCart.map(product => {
+				const theProduct = itemsInCart.find(
+					item => item.id === product.productId
+				)
+
+				return { ...product, quantity: theProduct.quantity }
+			})
+			setProductsInCart(productsWithQuantity)
+		}
 	}, [products])
+
+	console.log(productsInCart)
 	const noOfItemsInCart = useMemo(() => {
-		return (
-			productsInCart?.reduce((acc, curr) => {
-				return acc + curr.quantity
-			}, 0) || 0
-		)
+		if (products.length) {
+			return (
+				itemsInCart?.reduce((acc, curr) => {
+					return acc + curr.quantity
+				}, 0) || 0
+			)
+		} else {
+			return 0
+		}
 	}, [productsInCart])
 
 	const addItemToCart = async (productId, quantity = 1) => {
@@ -32,9 +47,23 @@ export const CartProvider = ({ children }) => {
 		await updateCart(newItems)
 		setProductsInCart([...productsInCart, { ...productInfo, quantity }])
 	}
+
+	const deleteProductFromCart = productId => {
+		const newItems = itemsInCart.filter(
+			itemInCart => itemInCart.id !== productId
+		)
+
+		const updatedIems = productsInCart.filter(
+			product => product.productId !== productId
+		)
+
+		updateCart(newItems)
+		setProductsInCart(updatedIems)
+	}
 	const values = {
 		noOfItemsInCart,
 		addItemToCart,
+		deleteProductFromCart,
 		productsInCart,
 	}
 	return <CartContext.Provider value={values}>{children}</CartContext.Provider>
@@ -47,13 +76,12 @@ const updateCart = items => {
 }
 
 const getItemsInCart = () => {
-	if (typeof window !== "undefined") {
-		const cart = localStorage.getItem("cart")
+	// if (typeof window !== "undefined") {
+	const cart = localStorage.getItem("cart")
 
-		if (cart !== null) {
-			return JSON.parse(cart)
-		} else {
-			return []
-		}
+	if (cart !== null) {
+		return JSON.parse(cart)
+	} else {
+		return []
 	}
 }
