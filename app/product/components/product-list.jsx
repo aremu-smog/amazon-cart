@@ -2,6 +2,7 @@ import { AText, Hr, LoadingSpinner } from "../../../components"
 import { useProductsContext } from "../../../contexts"
 
 import styles from "../product.module.css"
+import { NoProducts } from "./no-products"
 import { ProductItem } from "./product-item"
 export const ProductList = () => {
 	const { isLoading, products } = useProductsContext()
@@ -12,17 +13,20 @@ export const ProductList = () => {
 				<Hr />
 			</header>
 
-			{isLoading ? (
-				<LoadingSpinner title='Fetching Gift Cards' />
-			) : (
-				<ul className={styles["product-list-grid"]}>
-					{products.map(product => {
-						const { productId } = product
+			<Status isLoading={isLoading} products={products} />
 
-						return <ProductItem key={productId} product={product} />
-					})}
-				</ul>
-			)}
+			<ul className={styles["product-list-grid"]}>
+				{products.map(product => {
+					const { productId } = product
+
+					return <ProductItem key={productId} product={product} />
+				})}
+			</ul>
 		</section>
 	)
+}
+
+const Status = ({ isLoading, products }) => {
+	if (isLoading) return <LoadingSpinner title='Fetching Gift Cards' />
+	if (!isLoading && !products.length) return <NoProducts />
 }

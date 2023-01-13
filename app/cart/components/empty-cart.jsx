@@ -2,7 +2,6 @@
 import Image from "next/image"
 import Link from "next/link"
 const { AText, Button } = require("../../../components")
-import { useRouter } from "next/router"
 import styles from "../cart.module.css"
 
 export const EmptyCart = () => {

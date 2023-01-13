@@ -12,7 +12,7 @@ export const ProductsProvider = ({ children }) => {
 		fetch(`https://api.chimoney.io/v0.2/info/assets`, {
 			method: "GET",
 			headers: {
-				Bearer: process.env.NEXT_APP_CHIMONEY_API,
+				Bearer: process.env.NEXT_APP_CHIMONEY_API_KEY,
 			},
 		})
 			.then(res => res.json())
@@ -34,7 +34,7 @@ export const ProductsProvider = ({ children }) => {
 				setIsLoading(false)
 			})
 			.catch(e => {
-				console.log("Something went wrong", e.messaage)
+				setIsLoading(false)
 			})
 	}, [])
 	const values = {

@@ -128,12 +128,13 @@ const updateCart = items => {
 }
 
 const getItemsInCart = () => {
-	// if (typeof window !== "undefined") {
-	const cart = localStorage.getItem("cart")
+	if (typeof window !== "undefined") {
+		const cart = window.localStorage.getItem("cart")
 
-	if (cart !== null) {
-		return JSON.parse(cart)
-	} else {
-		return []
+		if (cart !== null) {
+			return JSON.parse(cart)
+		} else {
+			return []
+		}
 	}
 }
