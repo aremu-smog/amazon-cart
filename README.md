@@ -9,7 +9,7 @@ This is assessment was done with NextJS and CSS Modules for styling.
 Open your terminal, copy and paste the code the below to clone the repo on your local
 
 ```bash
-git clone https://github.com/aremu-smog/amazon-cart aremu-amazon-cart`
+git clone https://github.com/aremu-smog/amazon-cart aremu-amazon-cart
 ```
 
 Change your directory to the project's directory with the command: `cd aremu-amazon-cart`
