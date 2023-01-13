@@ -56,14 +56,35 @@
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
-	margin-top: 12px;
+	margin-top: 8px;
 }
 .cart-item-quantity {
-	padding: 2px;
+	padding: 4px;
 	border: 1px solid var(--az-black);
 	border-radius: 7px;
 	cursor: pointer;
 	margin-right: 12px;
+	width: 70px;
+}
+.cart-item-quantity-form {
+	display: flex;
+	align-items: center;
+}
+.cart-item-quantity-form input {
+	padding: 4px 8px;
+	border: 1px solid var(--az-black);
+	border-radius: 4px;
+	margin-right: 4px;
+	width: 70px;
+}
+.cart-item-quantity-form button {
+	padding: 2px 8px;
+	border-radius: 6px;
+	cursor: pointer;
+	margin-right: 12px;
+	height: 22px;
+	font-size: 12px;
+	line-height: 0;
 }
 
 .out-of-stock {

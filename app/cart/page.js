@@ -1,27 +1,33 @@
 "use client"
 
 import Head from "next/head"
-import { AText, Button, Hr } from "../../components"
+import { AText, Button, LoadingSpinner } from "../../components"
 import styles from "./cart.module.css"
 import { CartHeader } from "./components"
 import { CartItem } from "./components/cart-item"
 
-import { useCartContext } from "../../contexts"
+import { useCartContext, useProductsContext } from "../../contexts"
 export default function Cart() {
-	const { noOfItemsInCart, addItemToCart, productsInCart } = useCartContext()
-	console.log(productsInCart)
+	// Using the is loading from the products because we rely on the products to feed the local cart context
+	const { isLoading } = useProductsContext()
+	const { noOfItemsInCart, productsInCart } = useCartContext()
+
 	return (
 		<>
 			<main className={styles.wrapper}>
 				{/* Shopping Cart Section */}
 				<section className={styles.cart}>
 					<CartHeader />
-					<ul className={styles["cart-items-list"]}>
-						{productsInCart.map(product => {
-							const { productId } = product
-							return <CartItem key={productId} product={product} />
-						})}
-					</ul>
+					{isLoading ? (
+						<LoadingSpinner title='Fetching cart items...' />
+					) : (
+						<ul className={styles["cart-items-list"]}>
+							{productsInCart.map(product => {
+								const { productId } = product
+								return <CartItem key={productId} product={product} />
+							})}
+						</ul>
+					)}
 				</section>
 
 				{/* Subtotal Section */}
@@ -31,12 +37,7 @@ export default function Cart() {
 							Subtotal ({noOfItemsInCart} item{noOfItemsInCart > 1 && "s"}):{" "}
 							<b>$98.90</b>
 							<Button
-								onClick={() => addItemToCart(13960)}
-								className={styles["checkout-button"]}>
-								Proceed to checkout
-							</Button>
-							<Button
-								onClick={() => addItemToCart(1, 2)}
+								onClick={() => alert("Checkout of this")}
 								className={styles["checkout-button"]}>
 								Proceed to checkout
 							</Button>

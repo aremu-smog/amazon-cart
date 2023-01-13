@@ -26,7 +26,6 @@ export const CartProvider = ({ children }) => {
 		}
 	}, [products])
 
-	console.log(productsInCart)
 	const noOfItemsInCart = useMemo(() => {
 		if (products.length) {
 			return (
@@ -40,12 +39,22 @@ export const CartProvider = ({ children }) => {
 	}, [productsInCart])
 
 	const addItemToCart = async (productId, quantity = 1) => {
-		const newItem = { id: productId, quantity }
+		const itemIsIncart = itemsInCart.find(item => item.id === productId)
 
-		const productInfo = products.find(product => product.productId == productId)
-		const newItems = [...itemsInCart, newItem]
-		await updateCart(newItems)
-		setProductsInCart([...productsInCart, { ...productInfo, quantity }])
+		/* Items that are already the cart, we want to increase the quantity */
+		if (itemIsIncart) {
+			const newQuantity = parseInt(itemIsIncart.quantity) + parseInt(quantity)
+			updateCartItemQuantity(productId, newQuantity)
+		} else {
+			const newItem = { id: productId, quantity }
+			const productInfo = products.find(
+				product => product.productId == productId
+			)
+
+			const newItems = [...itemsInCart, newItem]
+			await updateCart(newItems)
+			setProductsInCart([...productsInCart, { ...productInfo, quantity }])
+		}
 	}
 
 	const deleteProductFromCart = productId => {

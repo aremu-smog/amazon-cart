@@ -36,11 +36,13 @@ const Logo = () => {
 }
 const Cart = () => {
 	const { noOfItemsInCart } = useCartContext()
+
+	const noOfItemsToShow = noOfItemsInCart > 99 ? "99+" : noOfItemsInCart
 	return (
 		<span className='cart-wrapper'>
 			<Link href='/cart'>
 				<AText variant='span' className='no-of-items'>
-					<b>{noOfItemsInCart}</b>
+					<b>{noOfItemsToShow}</b>
 				</AText>
 				<Image src='/cart.png' fill={true} alt='' />
 			</Link>
