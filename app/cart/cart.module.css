@@ -100,9 +100,20 @@
 	color: var(--az-red);
 }
 
+.empty-cart-wrapper {
+	text-align: center;
+	padding: 24px;
+}
+.empty-cart-wrapper img {
+	opacity: 0.5;
+}
+.empty-cart-wrapper button {
+	width: 200px;
+	margin-top: 16px;
+}
 .cart-sidebar {
-	flex-shrink: 1;
-	flex-grow: 0;
+	flex-shrink: 0;
+	flex-grow: 1;
 	position: relative;
 	max-width: 330px;
 }
