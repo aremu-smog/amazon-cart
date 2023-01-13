@@ -12,7 +12,11 @@ Open your terminal, copy and paste the code the below to clone the repo on your 
 git clone https://github.com/aremu-smog/amazon-cart aremu-amazon-cart
 ```
 
-Change your directory to the project's directory with the command: `cd aremu-amazon-cart`
+Change your directory to the project's directory with the command:
+
+```bash
+cd aremu-amazon-cart
+```
 
 ### Install Node Modules
 
