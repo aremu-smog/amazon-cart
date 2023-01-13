@@ -17,6 +17,11 @@
 	text-align: right;
 }
 
+.cart footer {
+	margin-top: 16px;
+	text-align: right;
+}
+
 .cart-items-list {
 	list-style-type: none;
 }
@@ -101,6 +106,7 @@
 	position: relative;
 	max-width: 330px;
 }
+
 .cart-checkout {
 	background-color: var(--az-white);
 	padding: 28px 22px 48px 22px;
