@@ -10,7 +10,7 @@ import { useCartContext, useProductsContext } from "../../contexts"
 export default function Cart() {
 	// Using the is loading from the products because we rely on the products to feed the local cart context
 	const { isLoading } = useProductsContext()
-	const { noOfItemsInCart, productsInCart } = useCartContext()
+	const { noOfItemsInCart, productsInCart, subTotal } = useCartContext()
 
 	return (
 		<>
@@ -35,7 +35,7 @@ export default function Cart() {
 					<div className={styles["cart-checkout"]}>
 						<AText variant='h2'>
 							Subtotal ({noOfItemsInCart} item{noOfItemsInCart > 1 && "s"}):{" "}
-							<b>$98.90</b>
+							<b>${subTotal}</b>
 							<Button
 								onClick={() => alert("Checkout of this")}
 								className={styles["checkout-button"]}>

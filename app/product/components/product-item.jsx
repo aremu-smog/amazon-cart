@@ -4,7 +4,7 @@ import { useCartContext } from "../../../contexts"
 import styles from "../product.module.css"
 
 export const ProductItem = ({ product }) => {
-	const { productName, productId, img } = product
+	const { productName, productId, price, img } = product
 
 	const { addItemToCart } = useCartContext()
 

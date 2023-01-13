@@ -29,8 +29,20 @@ export const CartProvider = ({ children }) => {
 	const noOfItemsInCart = useMemo(() => {
 		if (products.length) {
 			return (
-				itemsInCart?.reduce((acc, curr) => {
+				productsInCart?.reduce((acc, curr) => {
 					return parseInt(acc) + parseInt(curr.quantity)
+				}, 0) || 0
+			)
+		} else {
+			return 0
+		}
+	}, [productsInCart])
+
+	const subTotal = useMemo(() => {
+		if (products.length) {
+			return (
+				productsInCart?.reduce((acc, curr) => {
+					return acc + parseInt(curr.quantity) * parseFloat(curr.price)
 				}, 0) || 0
 			)
 		} else {
@@ -104,6 +116,7 @@ export const CartProvider = ({ children }) => {
 		deleteProductFromCart,
 		productsInCart,
 		updateCartItemQuantity,
+		subTotal,
 	}
 	return <CartContext.Provider value={values}>{children}</CartContext.Provider>
 }

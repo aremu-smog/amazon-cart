@@ -31,6 +31,10 @@
 	width: 180px;
 	height: 120px;
 	margin-right: 8px;
+	position: relative;
+}
+.cart-item-image img {
+	object-fit: cover;
 }
 
 .cart-item-details {
@@ -103,4 +107,26 @@
 }
 .checkout-button {
 	margin-top: 16px;
+}
+
+@media screen and (max-width: 920px) {
+	.wrapper {
+		flex-direction: column-reverse;
+	}
+
+	.cart-sidebar {
+		max-width: 100%;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.cart-item-heading {
+		flex-direction: column;
+	}
+
+	.cart-item-image {
+		width: 47.5%;
+		height: 150px;
+		flex-shrink: 0;
+	}
 }

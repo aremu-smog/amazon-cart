@@ -20,7 +20,17 @@ export const ProductsProvider = ({ children }) => {
 				const allAssets = data.data
 				const giftCards = allAssets.giftCardsRLD.content
 
-				setProducts(giftCards)
+				const giftCardsWithPrice = giftCards.map(giftCard => {
+					const { senderFee, productId } = giftCard
+
+					// Generating this because the API doesn't return a price for gift cards
+					const price = senderFee * productId
+					return {
+						...giftCard,
+						price,
+					}
+				})
+				setProducts(giftCardsWithPrice)
 				setIsLoading(false)
 			})
 			.catch(e => {

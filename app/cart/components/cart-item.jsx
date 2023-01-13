@@ -6,14 +6,14 @@ import styles from "../cart.module.css"
 
 const CartItem = ({ product }) => {
 	const { deleteProductFromCart, updateCartItemQuantity } = useCartContext()
-	const { productName, img, available, productId, quantity } = product
+	const { productName, img, available, price, productId, quantity } = product
 
 	return (
 		<>
 			<li className={styles["cart-item"]}>
 				{/* image */}
 				<div className={styles["cart-item-image"]}>
-					<Image src={img} alt='' width={180} height={120} />
+					<Image src={img} alt='' fill={true} />
 				</div>
 
 				{/* Cart item details */}
@@ -22,13 +22,10 @@ const CartItem = ({ product }) => {
 						{/* Title */}
 
 						<a href='' className={styles["cart-item-title"]}>
-							<AText variant='h2'>
-								{productName}
-								{productId}
-							</AText>
+							<AText variant='h2'>{productName}</AText>
 						</a>
 						{/* Price */}
-						<AText variant='h2'>$17.51</AText>
+						<AText variant='h2'>${price}</AText>
 					</div>
 					<div>
 						{/* Stock status */}
