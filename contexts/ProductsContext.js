@@ -9,13 +9,25 @@ export const ProductsProvider = ({ children }) => {
 	const [noOfItemsInCart, setNoOfItemsInCart] = useState(0)
 
 	useEffect(() => {
-		fetch(`https://api.chimoney.io/v0.2/info/assets`, {
+		const fetchAssets = (url, options) =>
+			fetch(url, options)
+				.then(res => {
+					if (!res.ok) throw new Error(`Request failed with ${res.status}`)
+					return res.json()
+				})
+				.then(data => {
+					if (!data?.data?.giftCardsRLD?.content) throw new Error("Invalid assets data")
+					return data
+				})
+
+		fetchAssets(`https://api.chimoney.io/v0.2/info/assets`, {
 			method: "GET",
 			headers: {
 				Bearer: process.env.NEXT_APP_CHIMONEY_API_KEY,
 			},
 		})
-			.then(res => res.json())
+			// Fallback to local mock data when the API request fails
+			.catch(() => fetchAssets("/mock.json"))
 			.then(data => {
 				const allAssets = data.data
 				const giftCards = allAssets.giftCardsRLD.content
